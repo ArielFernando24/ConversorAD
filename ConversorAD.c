@@ -58,11 +58,11 @@ void update_pwm(uint16_t x_value, uint16_t y_value) {
     if (!pwm_enabled) return;
 
     // Controle do LED Vermelho (eixo X)
-    uint16_t red_intensity = (abs(x_value - 2048) > DEADZONE) ? abs(x_value - 2048) * 2 : 0;
+    uint16_t red_intensity = (abs(x_value - 2048) > DEADZONE) ? abs(y_value - 2048) * 2 : 0;
     pwm_set_gpio_level(LED_RED_PIN, red_intensity);
 
     // Controle do LED Azul (eixo Y)
-    uint16_t blue_intensity = (abs(y_value - 2048) > DEADZONE) ? abs(y_value - 2048) * 2 : 0;
+    uint16_t blue_intensity = (abs(y_value - 2048) > DEADZONE) ? abs(x_value - 2048) * 2 : 0;
     pwm_set_gpio_level(LED_BLUE_PIN, blue_intensity);
 
     // Controle do LED Verde (botão do joystick)
